@@ -1,0 +1,43 @@
+*.class
+
+#package file
+*.war
+*.ear
+
+#maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+#kdiff3 ignore
+*.orig
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+#eclipse ignore
+.settings/
+.project
+.classpath
+
+#temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+Thumbs_db

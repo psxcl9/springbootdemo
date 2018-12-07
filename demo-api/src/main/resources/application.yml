@@ -1,0 +1,28 @@
+server:
+  port: 8088
+  undertow:
+    worker-threads: 256
+    io-threads: 16
+    buffer-size: 1024
+    direct-buffers: true
+
+# max-http-header-size: 102400000
+#  tomcat:
+#    max-http-post-size: -1
+
+
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+#  http:
+#    multipart:
+#      max-file-size: 100Mb
+#      max-request-size: 1000Mb
+logging:
+  level:
+    com.liaocx: debug
