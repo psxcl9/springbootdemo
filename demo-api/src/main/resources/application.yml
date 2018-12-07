@@ -5,7 +5,6 @@ server:
     io-threads: 16
     buffer-size: 1024
     direct-buffers: true
-
 # max-http-header-size: 102400000
 #  tomcat:
 #    max-http-post-size: -1
@@ -24,5 +23,4 @@ spring:
 #      max-file-size: 100Mb
 #      max-request-size: 1000Mb
 logging:
-  level:
-    com.liaocx: debug
+  config: classpath:config/logback-spring.xml
