@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>springbootdemo</name>
-	<description>Parent for Spring Boot Demo project</description>
+	<description>Parent pom for Spring Boot Demo project</description>
 
 	 <modules>
 		 <module>demo-api</module>
@@ -22,8 +22,6 @@
 		<version>2.1.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
-	<!--<repositories></repositories>-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,10 +36,10 @@
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>2.1.0.RELEASE</version>
 				<exclusions>
-				<exclusion>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
+					<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					</exclusion>
 				</exclusions>
 			</dependency>
 			<dependency>
