@@ -4,7 +4,7 @@
     <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,%i索引【从数字0开始递增】,,, -->
     <!-- appender是configuration的子节点，是负责写日志的组件。 -->
     <!-- ConsoleAppender：把日志输出到控制台 -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%red(%d{yyyy-MM-dd HH:mm:ss}) %contextName %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{15}) - %cyan(%msg%n)</pattern>
             <!-- 控制台也要使用UTF-8，不要使用GBK，否则会中文乱码 -->
@@ -18,7 +18,7 @@
         <!--生成文件位置-->
         <File>logs/demo.log</File>
         <!-- rollingPolicy:当发生滚动时，决定 RollingFileAppender 的行为，涉及文件移动和重命名。 -->
-        <!-- TimeBasedRollingPolicy： 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动 -->
+        <!-- SizeAndTimeBasedRollingPolicy是基于时间和文件大小的滚动策略  -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- 日志文件的名字会根据fileNamePattern的值，每隔一段时间改变一次 -->
             <!-- 文件名：log/demo.2018-12-05.0.log -->
@@ -39,13 +39,13 @@
     </appender>
     <!-- 指定最基础的日志输出级别 -->
     <root level="info">
-        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>
-    <!-- 指定项目中某个包，当有日志操作行为时的日志记录级别 -->
-    <!-- com.liaocx为根包，也就是只要是发生在这个根包下面的所有日志操作行为的权限都是DEBUG -->
+    <!-- 用来设置某一个包或者具体的某一个类的日志打印级别 -->
+    <!-- com.liaocx.controller为根包,发生在这个根包下面的所有日志操作行为的权限都是DEBUG, -->
     <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE  -->
-    <logger name="com.liaocx.controller" level="WARN" additivity="false">
-        <appender-ref ref="CONSOLE" />
+    <logger name="com.liaocx.controller" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT" />
     </logger>
 </configuration>

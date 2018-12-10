@@ -55,7 +55,8 @@ public class WebLogAspect {
     }
 
     /**
-     * 处理完请求，返回内容
+     * 处理完请求，返回内容和花费时间
+     * 要有返回值才会执行这个方法, 只抛出异常不会执行
      * @param ret
      */
     @AfterReturning(returning = "ret", pointcut = "webLog()")
