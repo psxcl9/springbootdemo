@@ -9,14 +9,10 @@
     </parent>
 
     <artifactId>demo-generator</artifactId>
-    <!--<packaging>jar</packaging>-->
     <name>demo-generator</name>
-    <description>Mybatis generator project for Spring Boot Demo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
-        <!--<java.version>1.8</java.version>-->
     </properties>
 
     <dependencies>
@@ -38,10 +34,18 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
                 <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generator</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>
                 </configuration>
+                <!--此处不加这个依赖要报 java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver-->
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.12</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

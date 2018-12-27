@@ -9,7 +9,6 @@ import org.springframework.util.unit.DataSize;
 import javax.servlet.MultipartConfigElement;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.liaocx")
 public class ApiApplication {
 
     public static void main(String[] args) {
@@ -26,3 +25,4 @@ public class ApiApplication {
         return factory.createMultipartConfig();
     }
 }
+

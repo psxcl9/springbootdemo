@@ -42,7 +42,6 @@ public class WebLogAspect {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         if (attributes != null) {
             HttpServletRequest request = attributes.getRequest();
-
             // 记录下请求内容
             System.out.println("\r\n");
             logger.info("地址 : " + request.getRequestURL().toString());
