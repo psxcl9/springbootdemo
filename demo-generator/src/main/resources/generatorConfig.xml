@@ -18,16 +18,16 @@
                 <property name="forceBigDecimals" value="false"/>
             </javaTypeResolver>
             <!-- 生成模型的包名和位置 ！！！主要多模块时targetProject的路径-->
-            <javaModelGenerator targetPackage="com.liaocx.model.domain" targetProject="D:\Java\project\springbootdemo\demo-api\src\main\java">
+            <javaModelGenerator targetPackage="com.liaocx.model.domain" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
                 <property name="enableSubPackages" value="true"/>
                 <property name="trimStrings" value="true"/>
             </javaModelGenerator>
             <!-- 生成映射文件的包名和位置 -->
-            <sqlMapGenerator targetPackage="mapper" targetProject="D:\Java\project\springbootdemo\demo-api\src\main\resources">
+            <sqlMapGenerator targetPackage="mapper" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/resources">
                 <property name="enableSubPackages" value="true"/>
             </sqlMapGenerator>
             <!-- 生成DAO的包名和位置 -->
-            <javaClientGenerator type="XMLMAPPER" targetPackage="com.liaocx.dao" targetProject="D:\Java\project\springbootdemo\demo-api\src\main\java">
+            <javaClientGenerator type="XMLMAPPER" targetPackage="com.liaocx.dao" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
                 <property name="enableSubPackages" value="true"/>
             </javaClientGenerator>
             <!-- 要生成哪些表 修改tableName和domainObjectName相应参数-->

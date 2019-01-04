@@ -14,6 +14,12 @@ spring:
   aop:
     auto: true
     proxy-target-class: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-uf6ilhn6at832n7v7ao.mysql.rds.aliyuncs.com:3306/rrn?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: root
+#    password: pwd     实际填写
+    type: com.alibaba.druid.pool.DruidDataSource
   servlet:
     multipart:
       max-file-size: 100MB
@@ -24,3 +30,18 @@ spring:
 #      max-request-size: 1000Mb
 logging:
   config: classpath:config/logback-spring.xml
+
+#mybatis配置，不能放在spring节点下
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.liaocx.model.domain  # 注意：对应实体类的路径
+  configuration:
+    jdbc-type-for-null: null
+    cache-enabled: true
+    call-setters-on-nulls: true
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
