@@ -114,6 +114,17 @@
 				<optional>true</optional>
 				<version>1.18.2</version>
 			</dependency>
+			<!--用于时间工具类处理-->
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.9.9</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.5</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
