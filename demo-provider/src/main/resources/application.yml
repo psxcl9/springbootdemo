@@ -9,7 +9,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rm-uf6ilhn6at832n7v7ao.mysql.rds.aliyuncs.com:3306/rrn?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
     username: root
-    password: Lifenxiang2018@
+    #password: pwd
     type: com.alibaba.druid.pool.DruidDataSource
   servlet:
     multipart:
