@@ -1,0 +1,24 @@
+server:
+  port: 8088
+# max-http-header-size: 102400000
+#  tomcat:
+#    max-http-post-size: -1
+
+spring:
+  profiles:
+    active:
+      - dev
+  aop:
+    auto: true
+    proxy-target-class: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+#  http:
+#    multipart:
+#      max-file-size: 300Mb
+#      max-request-size: 300Mb
+
+logging:
+  config: classpath:config/logback-spring.xml

@@ -10,6 +10,7 @@
 
     <artifactId>demo-generator</artifactId>
     <name>demo-generator</name>
+    <description>用于开发阶段使用mybatis-generator插件生成实体类、mapper接口以及mapper.xml</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +21,6 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -49,6 +49,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

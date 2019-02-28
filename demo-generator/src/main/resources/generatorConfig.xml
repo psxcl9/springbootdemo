@@ -6,6 +6,8 @@
         <properties resource="datasource.properties"/>
         <!-- 数据库驱动 -->
         <context id="DB2Tables"  targetRuntime="MyBatis3">
+            <!--支持实体类实现Serializable接口-->
+            <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
             <commentGenerator>
                 <property name="suppressDate" value="true"/>
                 <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -18,7 +20,7 @@
                 <property name="forceBigDecimals" value="false"/>
             </javaTypeResolver>
             <!-- 生成模型的包名和位置 ！！！主要多模块时targetProject的路径-->
-            <javaModelGenerator targetPackage="com.liaocx.model.domain" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
+            <javaModelGenerator targetPackage="com.liaocx.api.model.domain" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
                 <property name="enableSubPackages" value="true"/>
                 <property name="trimStrings" value="true"/>
             </javaModelGenerator>
@@ -27,11 +29,11 @@
                 <property name="enableSubPackages" value="true"/>
             </sqlMapGenerator>
             <!-- 生成DAO的包名和位置 -->
-            <javaClientGenerator type="XMLMAPPER" targetPackage="com.liaocx.dao" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
+            <javaClientGenerator type="XMLMAPPER" targetPackage="com.liaocx.api.dao" targetProject="/Users/liaocx/IdeaProjects/springbootdemo/demo-api/src/main/java">
                 <property name="enableSubPackages" value="true"/>
             </javaClientGenerator>
             <!-- 要生成哪些表 修改tableName和domainObjectName相应参数-->
             <!--<table tableName="db_table_name" domainObjectName="domainName"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>-->
-            <table tableName="customer_swing_record" domainObjectName="CustomerSwingRecord"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
+            <table tableName="banner" domainObjectName="Banner"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"/>
         </context>
     </generatorConfiguration>
