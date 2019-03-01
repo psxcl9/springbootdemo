@@ -5,12 +5,16 @@ spring:
   profiles:
     active:
       - dev
+  #数据源的配置
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
-    username: root
-    password: manuter0520
-    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 10
+      idle-timeout: 600000
+      connection-timeout: 60000
+      max-lifetime: 1800000
+      pool-name: DataSourceHikariCP
   servlet:
     multipart:
       max-file-size: 100MB
@@ -19,7 +23,7 @@ spring:
 #mybatis配置，不能放在spring节点下
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.liaocx.model.domain  # 注意：对应实体类的路径
+  type-aliases-package: com.liaocx.api.model.domain  # 注意：对应实体类的路径
   configuration:
     jdbc-type-for-null: null
     cache-enabled: true

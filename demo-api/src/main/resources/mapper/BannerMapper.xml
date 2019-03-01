@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liaocx.api.dao.BannerMapper">
+  <resultMap id="BaseResultMap" type="com.liaocx.api.model.domain.Banner">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="is_online" jdbcType="BIT" property="isOnline" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_create_user" jdbcType="BIGINT" property="gmtCreateUser" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="gmt_modified_user" jdbcType="BIGINT" property="gmtModifiedUser" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, img, activity_id, url, type, is_online, sort, is_deleted, gmt_create, gmt_create_user, 
+    gmt_modified, gmt_modified_user
+  </sql>
+  <select id="selectByExample" parameterType="com.liaocx.api.model.domain.BannerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from banner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from banner
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from banner
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.liaocx.api.model.domain.BannerExample">
+    delete from banner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.liaocx.api.model.domain.Banner">
+    insert into banner (id, img, activity_id, 
+      url, type, is_online, sort, 
+      is_deleted, gmt_create, gmt_create_user, 
+      gmt_modified, gmt_modified_user)
+    values (#{id,jdbcType=BIGINT}, #{img,jdbcType=VARCHAR}, #{activityId,jdbcType=BIGINT}, 
+      #{url,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{isOnline,jdbcType=BIT}, #{sort,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=BIT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtCreateUser,jdbcType=BIGINT}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{gmtModifiedUser,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liaocx.api.model.domain.Banner">
+    insert into banner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="isOnline != null">
+        is_online,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtCreateUser != null">
+        gmt_create_user,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="gmtModifiedUser != null">
+        gmt_modified_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isOnline != null">
+        #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreateUser != null">
+        #{gmtCreateUser,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModifiedUser != null">
+        #{gmtModifiedUser,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.liaocx.api.model.domain.BannerExample" resultType="java.lang.Long">
+    select count(*) from banner
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update banner
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.img != null">
+        img = #{record.img,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityId != null">
+        activity_id = #{record.activityId,jdbcType=BIGINT},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=TINYINT},
+      </if>
+      <if test="record.isOnline != null">
+        is_online = #{record.isOnline,jdbcType=BIT},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtCreateUser != null">
+        gmt_create_user = #{record.gmtCreateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModifiedUser != null">
+        gmt_modified_user = #{record.gmtModifiedUser,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update banner
+    set id = #{record.id,jdbcType=BIGINT},
+      img = #{record.img,jdbcType=VARCHAR},
+      activity_id = #{record.activityId,jdbcType=BIGINT},
+      url = #{record.url,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=TINYINT},
+      is_online = #{record.isOnline,jdbcType=BIT},
+      sort = #{record.sort,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_create_user = #{record.gmtCreateUser,jdbcType=BIGINT},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      gmt_modified_user = #{record.gmtModifiedUser,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liaocx.api.model.domain.Banner">
+    update banner
+    <set>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isOnline != null">
+        is_online = #{isOnline,jdbcType=BIT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreateUser != null">
+        gmt_create_user = #{gmtCreateUser,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModifiedUser != null">
+        gmt_modified_user = #{gmtModifiedUser,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liaocx.api.model.domain.Banner">
+    update banner
+    set img = #{img,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      url = #{url,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      is_online = #{isOnline,jdbcType=BIT},
+      sort = #{sort,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_create_user = #{gmtCreateUser,jdbcType=BIGINT},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      gmt_modified_user = #{gmtModifiedUser,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

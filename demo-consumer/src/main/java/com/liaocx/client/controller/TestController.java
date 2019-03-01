@@ -6,10 +6,13 @@ import com.liaocx.api.service.TestService;
 import com.liaocx.common.util.OSSUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.sql.SQLException;
 
 @RestController
 @RequestMapping(value = "test")
@@ -24,6 +27,16 @@ public class TestController {
     public ServerResponse hello(String param) {
         String data = testService.sayHello();
         return ServerResponse.createBySuccessMessage(data + "," + param);
+    }
+
+    @GetMapping("dataSource")
+    public ServerResponse getDataSource() throws SQLException {
+        return testService.dataSource();
+    }
+
+    @GetMapping("mybatis")
+    public ServerResponse testMybatis() {
+        return testService.mybatis();
     }
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
